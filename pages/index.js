@@ -13,7 +13,6 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import got from "got";
 
 export default function Home({ randomJoke, categories }) {
   const [selectedCategory, setSelectedCategory] = useState(categories[""]);
@@ -135,12 +134,14 @@ export default function Home({ randomJoke, categories }) {
   );
 }
 export async function getServerSideProps() {
-  const randomJoke = await got(
+  const randomJokeRes = await fetch(
     "https://api.chucknorris.io/jokes/random"
-  ).json();
-  const categories = await got(
+  );
+  const randomJoke = await randomJokeRes.json();
+  const categoriesRes = await fetch(
     "https://api.chucknorris.io/jokes/categories"
-  ).json();
+  );
+  const categories = await categoriesRes.json();
 
   return {
     props: {
