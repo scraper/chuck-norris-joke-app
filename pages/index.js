@@ -130,7 +130,7 @@ export default function Home({ randomJoke, categories }) {
         </div>
       </main>
 
-      <footer className={styles.footer}>Petro Franko</footer>
+      <footer className={styles.footer}>Franko</footer>
     </Container>
   );
 }
