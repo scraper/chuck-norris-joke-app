@@ -73,8 +73,14 @@ export default function Home({ randomJoke, categories }) {
             width="360px"
             height="219px"
           />
-          <h3 className={styles.title}>Welcome to Chuck Norris Jokes</h3>
         </Row>
+        <br />
+        <Row className="justify-content-md-center">
+          <Col md="auto">
+            <h3>Welcome to Chuck Norris Jokes</h3>
+          </Col>
+        </Row>
+        <br />
         <Row className="justify-content-md-center">
           <Col md="auto">
             <Alert variant="success">{currentJoke}</Alert>
@@ -134,9 +140,7 @@ export default function Home({ randomJoke, categories }) {
   );
 }
 export async function getServerSideProps() {
-  const randomJokeRes = await fetch(
-    "https://api.chucknorris.io/jokes/random"
-  );
+  const randomJokeRes = await fetch("https://api.chucknorris.io/jokes/random");
   const randomJoke = await randomJokeRes.json();
   const categoriesRes = await fetch(
     "https://api.chucknorris.io/jokes/categories"
